@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Strona główna sklepu Shopee</title>
+    <meta charset="UTF-8" />
+</head>
+<body>
+    <h1>To jest strona główna sklepu</h1>
+    <p>To jest jakiś napis</p>
+    <hr />
+
+    <h2>Formularz</h2>
+    <form method="post" th:action="@{/add-new-product}" th:object="${product}">
+        <input type="text" placeholder="tu wpisz nazwe produktu" th:field="*{name}"  />
+        <input type="number" placeholder="tu wpisz cene produktu" th:field="*{price}" />
+        <input type="submit" value="zapisz produkt" />
+    </form>
+    <hr />
+
+    <h2>Lista produktów</h2>
+    <ul>
+        <li th:each="product: ${products}">
+            <p th:text="${product.getName()}"></p>
+            <p th:text="${product.getPrice()}"></p>
+        </li>
+    </ul>
+</body>
+</html>
